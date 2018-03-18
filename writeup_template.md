@@ -114,9 +114,13 @@ My image augmentation pipeline consist of four steps:
 **Image cropping:**
 The image was cropped remove the unwanted to top and botton portion that would distract the model more. 
 
-Original image: ![alt text][image2]
+![alt text][image2]
+|:--:| 
+| *Original image* |
 
-Cropped image: ![alt text][image3]
+![alt text][image3]
+|:--:| 
+| *Cropped image* |
 
 **Image resizing:**
 The cropped image was further resized to half of the orignal size. This reduced the number of parameters and helped train the model fast.
@@ -124,16 +128,24 @@ The cropped image was further resized to half of the orignal size. This reduced 
 **Image sheering:**
 The above reized cropped image is further sheered.
 
-Orginal image: ![alt text][image4]
+![alt text][image4]
+|:--:| 
+| *Original image* |
 
-Sheered image: ![alt text][image5]
+![alt text][image5]
+|:--:| 
+| *Sheered image* |
 
 **Image flipping:** 
 Finally the image is flipped.
 
-Orignial image: ![alt text][image6]
+![alt text][image6]
+|:--:| 
+| *Original image* |
 
-Flipped image: ![alt text][image7]
+![alt text][image7]
+|:--:| 
+| *Flipped image* |
 
 
 I finally randomly shuffled the data set.
