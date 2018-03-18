@@ -19,7 +19,11 @@ import random
 
 
  def extract_camera_pos(lines, camera_pos):
-    
+#The images path and associated steering angle are appended to lists. If the camera position is left or right, 
+# an additional correction factor 0.2 is added/subracted to the steering angle. 
+#Lines: lines list extracted from driving_csv file.
+#camera_pos: 'center', 'left' or 'right'  
+
     X,y=[],[]
     
     if camera_pos=='center':
@@ -41,13 +45,17 @@ import random
 
 def data_loading():
     
+    #reads the csv into a list
+
     with open('./examples/driving_log.csv') as csvfile:
         reader = csv.reader(csvfile)
         lines = []
         next(reader)
         for row in reader:
             lines.append(row)
-    
+            
+    #appened each camera position image path and associated steering angle into separate list
+
     X_center, y_center = extract_camera_pos(lines, camera_pos='center')    
     X_left, y_left = extract_camera_pos(lines, camera_pos='left')
     X_right, y_right = extract_camera_pos(lines, camera_pos='left')
@@ -73,15 +81,13 @@ def data_loading():
         
     return X, y
 
-def image_augmentation(img_list, steering_angle):
+def image_augmentation_pipline(img_list, steering_angle):
     
     #Cropping image
     crop_img=[]
     for i in range(len(img_list)):
         crop_img.append(img_list[i][60:140])
-    
- 
-        
+      
     #Resizing image
     resized_img=[]
     for i in range(len(crop_img)):
@@ -89,9 +95,6 @@ def image_augmentation(img_list, steering_angle):
     
     #Image Sheering
     sheared_img=[]
-    #print(len(steering_angle))
-    #print(len(resized_img))
-    
     for i in range(0, len(resized_img), 3): 
         rand_value = round(random.uniform(-1,1),1)
         #Create Afine transform
@@ -108,12 +111,7 @@ def image_augmentation(img_list, steering_angle):
 
     #Image flipping
     X_img = np.array(resized_img)
-    y_steer =np.array(y_steer)
-    
-
-        
-    #shuffle(x_img, y_steer)
-    
+    y_steer =np.array(y_steer)      
     for i in range(0, len(X_img), 3):
         X_img[i]= np.fliplr(X_img[i])
         y_steer[i]= -y_steer[i]
@@ -137,7 +135,7 @@ def image_generator(img_path_list, steering_angle, batch_size):
                 path = x_img_batch[i]
                 img.append(mpimg.imread(path))
             
-            X_img, y_steer = image_augmentation(img_list=img, steering_angle = y_steer_batch)
+            X_img, y_steer = image_augmentation_pipeline(img_list=img, steering_angle = y_steer_batch)
                 
             yield shuffle(X_img, y_steer)
         
