@@ -153,6 +153,7 @@ I also used python generator instead of storing the data in the memory.
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 30. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 Video of the car driving autonomously using the trained model
-![alt text][video1]
+
+[Video Output](![alt text][video1])
 
 
