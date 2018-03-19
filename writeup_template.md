@@ -23,6 +23,7 @@ The goals / steps of this project are the following:
 [image5]: ./examples/after_sheer.png "after_sheer"
 [image6]: ./examples/before_flip.png "before_flip"
 [image7]: ./examples/after_flip.png "after_flip"
+[video1]: ./video_output.mp4
 
 
 ---
@@ -152,5 +153,6 @@ I also used python generator instead of storing the data in the memory.
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 30. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 Video of the car driving autonomously using the trained model
+![alt text][video1]
 
 
