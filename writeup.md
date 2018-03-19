@@ -23,7 +23,6 @@ The goals / steps of this project are the following:
 [image5]: ./examples/after_sheer.png "after_sheer"
 [image6]: ./examples/before_flip.png "before_flip"
 [image7]: ./examples/after_flip.png "after_flip"
-[video1]: ./video_output.mp4
 
 
 ---
@@ -154,6 +153,6 @@ I used this training data for training the model. The validation set helped dete
 
 Video of the car driving autonomously using the trained model
 
-[Video Output](![alt text][video1])
+[Video Output](./video_output.mp4)
 
 
