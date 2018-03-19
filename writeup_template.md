@@ -71,7 +71,7 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-My first step was to use a convolution neural network model from the Nvidia's end-to-end deeplearning[paper](https://arxiv.org/pdf/1604.07316v1.pdf). The paper does not mention the type of activation unit used. Hence I started with RELUs. The result obtained was good as the car was completing the track but at few places the car was driving on the road lane markers or crossing it. 
+My first step was to use a convolution neural network model from the Nvidia's end-to-end deeplearning [paper](https://arxiv.org/pdf/1604.07316v1.pdf). The paper does not mention the type of activation unit used. Hence I started with RELUs. The result obtained was good as the car was completing the track but at few places the car was driving on the road lane markers or crossing it. 
 
 After changing the activation unit to ELUs the car was driving in the middle of the road. My initials models had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. Dropout layer and Image augmentation is used to further reduce the overfitting and make model generalize well.
 
@@ -81,20 +81,20 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 The final model architecture (model.py lines 157-176) consisted of a convolution neural network with the following layers and layer sizes 
 
-Input Shape: 40x160x3
-Lamba: Image normalization
-Convolution: 5x5, filter: 24, strides: 2x2, activation: ELU
-Convolution: 5x5, filter: 36, strides: 2x2, activation: ELU
-Convolution: 5x5, filter: 48, strides: 2x2, activation: ELU
-Convolution: 3x3, filter: 64, strides: 1x1, activation: ELU
-Convolution: 3x3, filter: 64, strides: 1x1, activation: ELU
-Drop out (0.5)
-Fully connected: neurons: 100, activation: ELU
-Fully connected: neurons: 50, activation: ELU
-Fully connected: neurons: 10, activation: ELU
-Fully connected: neurons: 1 (output)
-Optimizer: adam
-Loss function: mse
+Input Shape: 40x160x3 <br />
+Lamba: Image normalization <br />
+Convolution: 5x5, filter: 24, strides: 2x2, activation: ELU <br />
+Convolution: 5x5, filter: 36, strides: 2x2, activation: ELU <br />
+Convolution: 5x5, filter: 48, strides: 2x2, activation: ELU <br />
+Convolution: 3x3, filter: 64, strides: 1x1, activation: ELU <br />
+Convolution: 3x3, filter: 64, strides: 1x1, activation: ELU <br />
+Drop out (0.5) <br />
+Fully connected: neurons: 100, activation: ELU <br />
+Fully connected: neurons: 50, activation: ELU <br />
+Fully connected: neurons: 10, activation: ELU <br />
+Fully connected: neurons: 1 (output) <br />
+Optimizer: adam <br />
+Loss function: mse <br />
 
 Here is a visualization of the architecture:
 
@@ -104,11 +104,11 @@ Here is a visualization of the architecture:
 
 To capture good driving behavior, I first recorded three laps in the correct direction and two laps in the wrong direction. I also captured data recovering from left to center and right to center. More data was added using the image augmentaiton pipeline. The image augmentation pipeline creates a new augementated image for every 3rd image from the collected data and this is appened to the final data array.
 
-##### Image augmentation pipeline:
+#### **Image augmentation pipeline:**
 
 My image augmentation pipeline consist of four steps:
 
-**Image cropping:**
+##### **Image cropping:**
 The image was cropped remove the unwanted to top and botton portion that would distract the model more. 
 
 ![alt text][image2]
@@ -119,10 +119,10 @@ The image was cropped remove the unwanted to top and botton portion that would d
 |:--:| 
 | *Cropped image* |
 
-**Image resizing:**
+##### **Image resizing:**
 The cropped image was further resized to half of the orignal size. This reduced the number of parameters and helped train the model fast.
 
-**Image sheering:**
+##### **Image sheering:**
 The above reized cropped image is further sheered.
 
 ![alt text][image4]
@@ -133,7 +133,7 @@ The above reized cropped image is further sheered.
 |:--:| 
 | *Sheered image* |
 
-**Image flipping:** 
+##### **Image flipping:** 
 Finally the image is flipped.
 
 ![alt text][image6]
